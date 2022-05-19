@@ -1,5 +1,7 @@
 import "./style.css"
 import Todo from "./todoObjects"
+import updateMain from "./mainContent"
+// import {todoArray, projectArray} from "./todoObjects"
 // grabbing the root node element
 
 const content = document.querySelector("#content")
@@ -42,8 +44,13 @@ content.appendChild(container)
 container.append(header, leftSidebar, main, footer)
 leftSidebar.append(viewAll, projects)
 
+// testing a random Todo
 const gardening = new Todo("Gardening","Gardening","Urgent","monday")
 gardening.pushProject()
 gardening.pushTodo()
+
+
+export default main
+updateMain()
 
 

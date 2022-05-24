@@ -33,7 +33,10 @@ projects.appendChild(addNewProject)
 // main content
 const main = document.createElement("div")
 main.classList.toggle("main")
-main.textContent = "Main Content"
+const addNewTodo = document.createElement("button")
+addNewTodo.classList.toggle("addNewTodo")
+addNewTodo.textContent = "+ Add New ToDo"
+main.insertBefore(addNewTodo, main.firstChild)
 
 // footer
 const footer = document.createElement("div")

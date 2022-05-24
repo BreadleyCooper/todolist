@@ -15,11 +15,19 @@ function updateMain () {
         const todoProject = document.createElement("div")
         todo.classList.toggle("todo")
         todoCompleteBtn.classList.toggle("todoCompletBtn")
+        todoCompleteBtn.textContent = "✔️"
         todoName.classList.toggle("todoName")
         todoPriority.classList.toggle("todoPriority")
         todoProject.classList.toggle("todoProject")
         main.appendChild(todo)
-        todo.append(todoCompleteBtn, todoName, todoPriority, todoDueDate, todoProject)
+        todo.append(todoName, todoPriority, todoDueDate, todoProject, todoCompleteBtn)
+        // eventlistener for complete button
+        todoCompleteBtn.addEventListener("click", () => {
+            // logic here to remove this single instance
+            main.removeChild(todo)
+            todoArray.splice(todoArray.indexOf(element), 1);
+            console.log(todoArray)
+        })
         // loops over each object and extracts the value. (textContent for now, will change later)
         for (let key in element){
             todoName.textContent = element.name;
@@ -28,7 +36,6 @@ function updateMain () {
             todoProject.textContent = element.project;
             todo.append()
         }
-        
     });
 }
 

@@ -9,11 +9,9 @@ function Todo (name, project, priority, dueDate) {
     this.dueDate = dueDate;
     this.pushTodo = function() {
         todoArray.push(this)
-        console.log(todoArray)
     }
     this.pushProject = function() {
         projectArray.push(this.project)
-        console.log(projectArray)
     }
 }
 

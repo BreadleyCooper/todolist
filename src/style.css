@@ -163,3 +163,7 @@ body.activeForm .overlayForm{
   color: #fff;
   font-weight: 500;
 }
+select {
+  width: 100%;
+  font-size: inherit;
+}

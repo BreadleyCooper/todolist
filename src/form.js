@@ -41,17 +41,16 @@ function todoForm (){
     const formProjectLabel = document.createElement("label")
     formProjectLabel.setAttribute("for", "projectInput")
     formProjectLabel.textContent = "Select project:";
-    const formProjectInput = document.createElement("input")
-    formProjectInput.setAttribute("list", "projects")
+    const formProjectInput = document.createElement("select")
+    formProjectInput.setAttribute("name", "projects")
     formProjectInput.setAttribute("id", "projectInput")
-    const formProjectList = document.createElement("datalist")
-    formProjectList.setAttribute("id", "projects")
-    formElementProject.append(formProjectLabel, formProjectInput, formProjectList);
+    formElementProject.append(formProjectLabel, formProjectInput);
     // loop through project array to grab the projects for the dropdown
     projectArray.forEach(function(element){
         let option = document.createElement("option")
         option.value = element;
-        formProjectList.appendChild(option)
+        option.textContent = `${element}`
+        formProjectInput.appendChild(option)
     })
 
     // form 'priority' container
@@ -62,20 +61,21 @@ function todoForm (){
     const formPriorityLabel = document.createElement("label")
     formPriorityLabel.setAttribute("for", "priorityInput")
     formPriorityLabel.textContent = "Select priority:";
-    const formPriorityInput = document.createElement("input")
-    formPriorityInput.setAttribute("list", "priority")
+    const formPriorityInput = document.createElement("select")
+    formPriorityInput.setAttribute("name", "priority")
     formPriorityInput.setAttribute("id", "priorityInput")
-    const formPriorityList = document.createElement("datalist")
-    formPriorityList.setAttribute("id", "priority")
-    formElementProject.append(formPriorityLabel, formPriorityInput, formPriorityList);
+    formElementProject.append(formPriorityLabel, formPriorityInput);
     // priority dropdown options
     const priorityUrgent = document.createElement("option")
     priorityUrgent.setAttribute("value", "Urgent")
+    priorityUrgent.textContent = "Urgent"
     const priorityRoutine = document.createElement("option")
     priorityRoutine.setAttribute("value", "Routine")
+    priorityRoutine.textContent = "Routine"
     const priorityBackBurner = document.createElement("option")
     priorityBackBurner.setAttribute("value", "Backburner")
-    formPriorityList.append(priorityUrgent, priorityRoutine, priorityBackBurner)
+    priorityBackBurner.textContent = "Back-Burner"
+    formPriorityInput.append(priorityUrgent, priorityRoutine, priorityBackBurner)
 
     // form 'date due' container
     const formElementDue = document.createElement("div")
@@ -105,6 +105,7 @@ function todoForm (){
     document.getElementsByTagName("body")[0].appendChild(form)
     console.log("todoForm function is firing")
     // NEED TO CHANGE PROJECT AND PRIORITY INPUTS TO DROPDOWNS, AND CODE THE SUBMIT BUTTON
+    // THE CLOSE FORM BUTTON IS NOT WORKING. 
 }
 
 // function to toggle class that brings up a new todo form

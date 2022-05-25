@@ -1,7 +1,7 @@
 // importing the arrays and the DOM element
 import todoLoop from "./todoLoop";
 import {projectArray,todoArray } from "./todoObjects";
-
+import todoForm from "./form";
 
 // function to create and append the main section with each todo
 function updateMain () {

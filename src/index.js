@@ -1,6 +1,7 @@
 import "./style.css"
 import Todo from "./todoObjects"
 import updateMain from "./mainContent"
+import { toggleForm, todoForm } from "./form"
 // import {todoArray, projectArray} from "./todoObjects"
 // grabbing the root node element
 
@@ -36,6 +37,10 @@ main.classList.toggle("main")
 const addNewTodo = document.createElement("button")
 addNewTodo.classList.toggle("addNewTodo")
 addNewTodo.textContent = "+ Add New ToDo"
+addNewTodo.addEventListener("click", () => {
+    todoForm()
+    toggleForm()
+})
 main.insertBefore(addNewTodo, main.firstChild)
 
 // footer

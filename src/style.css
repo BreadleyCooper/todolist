@@ -167,3 +167,11 @@ select {
   width: 100%;
   font-size: inherit;
 }
+h2 {
+  font-family: inherit;
+  color: #eb5e28;
+}
+.currentProjects {
+  font-family: inherit;
+  color: #ffffff;
+}

@@ -1,4 +1,5 @@
-// // DOM manipulation for input new todo form
+// // DOM manipulation for input new todo form and new project form
+
 import updateMain from "./mainContent"
 import Todo, { todoArray } from "./todoObjects"
 import { projectArray } from "./todoObjects"
@@ -115,7 +116,6 @@ function todoForm (){
     // append the entire form container to the body when called
     document.getElementsByTagName("body")[0].appendChild(form)
     console.log("todoForm function is firing")
-    // NEED TO CODE THE SUBMIT BUTTON. 
 }
 
 // function to toggle class that brings up a new todo form
@@ -141,8 +141,60 @@ function removeForm() {
     }
 } 
 
+// form for adding a new Project (remember to include a list of current projects)
+function newProjectForm(){
+    // container elements for form
+    const form = document.createElement("form")
+    form.classList.toggle("form")
+    const overlayForm = document.createElement("div")
+    overlayForm.classList.toggle("overlayForm")
+    form.appendChild(overlayForm)
+
+    // close form 'x' button
+    const closeForm = document.createElement("div")
+    closeForm.classList.toggle("closeForm")
+    closeForm.addEventListener("click", () => {
+        toggleForm();
+        removeForm();
+    })
+    closeForm.innerHTML = "&times"
+    overlayForm.appendChild(closeForm)
+
+    // form header
+    const formHeader = document.createElement("h1")
+    formHeader.textContent = "Add a new Project"
+    overlayForm.appendChild(formHeader);
+
+    // project name input
+    const formElementName = document.createElement("div")
+    formElementName.classList.toggle("formElement")
+    overlayForm.appendChild(formElementName)
+    // 'Name' input fields - text
+    const formNameLabel = document.createElement("label")
+    formNameLabel.setAttribute("for", "Name")
+    formNameLabel.textContent = "Name of New Project";
+    const formNameInput = document.createElement("input")
+    formNameInput.setAttribute("type", "text")
+    formNameInput.setAttribute("id", "newProjectInput")
+    formElementName.append(formNameLabel, formNameInput);
+
+    // list of current Projects
+    const currentProjects = document.createElement("div")
+    currentProjects.classList.toggle("currentProjects")
+    overlayForm.appendChild(currentProjects)
+    const currentProjectsTitle = document.createElement("h2")
+    currentProjectsTitle.textContent = "List of Current Projects"
+    currentProjects.append(currentProjectsTitle)
+    projectArray.forEach((element) => {currentProjects.append(element)
+    })
+
+    // append form container to body
+    document.getElementsByTagName("body")[0].appendChild(form)
+}
+
 export {
     todoForm,
     toggleForm,
-    removeForm
+    removeForm,
+    newProjectForm
 }

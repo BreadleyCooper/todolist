@@ -1,7 +1,7 @@
 import "./style.css"
 import Todo from "./todoObjects"
 import updateMain from "./mainContent"
-import { toggleForm, todoForm } from "./form"
+import { toggleForm, todoForm, newProjectForm } from "./form"
 // import {todoArray, projectArray} from "./todoObjects"
 // grabbing the root node element
 
@@ -28,6 +28,10 @@ projects.textContent = "Projects"
 const addNewProject = document.createElement("button")
 addNewProject.classList.toggle("addNewProject")
 addNewProject.textContent = "+ Add New Project"
+addNewProject.addEventListener("click", () =>{
+    newProjectForm()
+    toggleForm()
+})
 projects.appendChild(addNewProject)
 
 

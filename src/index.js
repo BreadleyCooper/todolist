@@ -38,8 +38,8 @@ const addNewTodo = document.createElement("button")
 addNewTodo.classList.toggle("addNewTodo")
 addNewTodo.textContent = "+ Add New ToDo"
 addNewTodo.addEventListener("click", () => {
-    todoForm()
     toggleForm()
+    todoForm()
 })
 main.insertBefore(addNewTodo, main.firstChild)
 
@@ -54,7 +54,6 @@ leftSidebar.append(viewAll, projects)
 
 // testing a random Todo
 const gardening = new Todo("Gardening","Gardening","Urgent","monday")
-gardening.pushProject()
 gardening.pushTodo()
 
 

@@ -1,5 +1,6 @@
 // // DOM manipulation for input new todo form
-import Todo from "./todoObjects"
+import updateMain from "./mainContent"
+import Todo, { todoArray } from "./todoObjects"
 import { projectArray } from "./todoObjects"
 
 function todoForm (){
@@ -12,7 +13,10 @@ function todoForm (){
     // close form 'x' button
     const closeForm = document.createElement("div")
     closeForm.classList.toggle("closeForm")
-    closeForm.addEventListener("click", toggleForm())
+    closeForm.addEventListener("click", () => {
+        toggleForm();
+        removeForm();
+    })
     closeForm.innerHTML = "&times"
     overlayForm.appendChild(closeForm)
     // form header
@@ -97,31 +101,48 @@ function todoForm (){
     overlayForm.appendChild(formElementSubmit)
     // submit button 
     const formSubmitButton = document.createElement("button")
-    formSubmitButton.setAttribute("onclick", `${toggleForm()}`)
+    formSubmitButton.addEventListener("click", () => {
+        addTodo();
+        toggleForm();
+        removeForm();
+        updateMain();
+        console.log(todoArray)
+    }) 
+
     formSubmitButton.setAttribute("type", "button")
     formSubmitButton.setAttribute("id", "submit")
     formElementSubmit.appendChild(formSubmitButton)
     // append the entire form container to the body when called
     document.getElementsByTagName("body")[0].appendChild(form)
     console.log("todoForm function is firing")
-    // NEED TO CHANGE PROJECT AND PRIORITY INPUTS TO DROPDOWNS, AND CODE THE SUBMIT BUTTON
-    // THE CLOSE FORM BUTTON IS NOT WORKING. 
+    // NEED TO CODE THE SUBMIT BUTTON. 
 }
 
 // function to toggle class that brings up a new todo form
 function toggleForm(){
     document.body.classList.toggle("activeForm")
+    console.log("toggleForm is firing")
 }
 // function to call when create a new Todo form button clicked, after completing the form
 function addTodo(name, project, priority, dueDate){
-    name = document.querySelector("#newName").value;
-    project = document.querySelector("#newProject").value;
-    priority = document.querySelector("newPriority").value;
-    dueDate = document.querySelector("#newDueDate").value;
-    let newToto = new Todo(name,project,priority,dueDate)
+    name = document.querySelector("#formName").value;
+    project = document.querySelector("#projectInput").value;
+    priority = document.querySelector("#priorityInput").value;
+    dueDate = document.querySelector("#dueInput").value;
+    const newTodo = new Todo(name,project,priority,dueDate)
+    newTodo.pushTodo();
 }
+
+// function to remove the form element from DOM when closed
+function removeForm() {
+    const elements = document.getElementsByClassName("form")
+    while (elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0])
+    }
+} 
 
 export {
     todoForm,
-    toggleForm
+    toggleForm,
+    removeForm
 }

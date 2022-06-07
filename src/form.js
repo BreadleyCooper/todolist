@@ -188,10 +188,32 @@ function newProjectForm(){
     projectArray.forEach((element) => {currentProjects.append(element)
     })
 
+    // submit new project button
+    const newProjectSubmit = document.createElement("div")
+    newProjectSubmit.classList.toggle("formElement")
+    overlayForm.appendChild(newProjectSubmit)
+    // submit button 
+    const newProjectSubmitBtn = document.createElement("button")
+    newProjectSubmitBtn.addEventListener("click", () => {
+        pushNewProject();
+        toggleForm();
+        removeForm();
+        console.log(projectArray)       
+    }) 
+
+    newProjectSubmitBtn.setAttribute("type", "button")
+    newProjectSubmitBtn.setAttribute("id", "submit")
+    newProjectSubmit.appendChild(newProjectSubmitBtn)
+
+
     // append form container to body
     document.getElementsByTagName("body")[0].appendChild(form)
 }
 
+function pushNewProject() {
+    const newProject = document.getElementById("newProjectInput")
+    projectArray.push(newProject.value)
+}
 export {
     todoForm,
     toggleForm,

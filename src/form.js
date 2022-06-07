@@ -176,6 +176,7 @@ function newProjectForm(){
     const formNameInput = document.createElement("input")
     formNameInput.setAttribute("type", "text")
     formNameInput.setAttribute("id", "newProjectInput")
+    formNameInput.setAttribute("required", "")
     formElementName.append(formNameLabel, formNameInput);
 
     // list of current Projects
@@ -185,7 +186,7 @@ function newProjectForm(){
     const currentProjectsTitle = document.createElement("h2")
     currentProjectsTitle.textContent = "List of Current Projects"
     currentProjects.append(currentProjectsTitle)
-    projectArray.forEach((element) => {currentProjects.append(element)
+    projectArray.forEach((element) => {currentProjects.append(element + ", ")
     })
 
     // submit new project button
@@ -194,14 +195,15 @@ function newProjectForm(){
     overlayForm.appendChild(newProjectSubmit)
     // submit button 
     const newProjectSubmitBtn = document.createElement("button")
+    newProjectSubmitBtn.textContent = "+ Add New Project"
     newProjectSubmitBtn.addEventListener("click", () => {
         pushNewProject();
         toggleForm();
-        removeForm();
-        console.log(projectArray)       
+        removeForm();   
+        console.log(projectArray)  
     }) 
 
-    newProjectSubmitBtn.setAttribute("type", "button")
+    newProjectSubmitBtn.setAttribute("type", "submit")
     newProjectSubmitBtn.setAttribute("id", "submit")
     newProjectSubmit.appendChild(newProjectSubmitBtn)
 

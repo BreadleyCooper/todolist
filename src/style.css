@@ -175,3 +175,20 @@ h2 {
   font-family: inherit;
   color: #ffffff;
 }
+#submit {
+  background-color: transparent;
+  color: white;
+  border-radius: 10px;
+  height: 4rem;
+  transition: 0.5s;
+  cursor: pointer;
+  border: hsl(4, 53%, 90%) solid 5px;
+  font-size: 1.5rem;
+  font-family: inherit;
+  margin: 10px;
+  
+}
+#submit:hover {
+  background-color: hsl(4, 53%, 90%);
+  color: black
+}

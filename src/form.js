@@ -146,6 +146,8 @@ function newProjectForm(){
     // container elements for form
     const form = document.createElement("form")
     form.classList.toggle("form")
+    form.setAttribute("method", "post")
+    form.setAttribute("action", "#")
     const overlayForm = document.createElement("div")
     overlayForm.classList.toggle("overlayForm")
     form.appendChild(overlayForm)
@@ -174,9 +176,11 @@ function newProjectForm(){
     formNameLabel.setAttribute("for", "Name")
     formNameLabel.textContent = "Name of New Project";
     const formNameInput = document.createElement("input")
-    formNameInput.setAttribute("type", "text")
+    formNameInput.required = true;
     formNameInput.setAttribute("id", "newProjectInput")
     formNameInput.setAttribute("required", "")
+    formNameInput.setAttribute("name", "newProjectInput")
+    formNameInput.setAttribute("minlength", "1")
     formElementName.append(formNameLabel, formNameInput);
 
     // list of current Projects
@@ -197,10 +201,13 @@ function newProjectForm(){
     const newProjectSubmitBtn = document.createElement("button")
     newProjectSubmitBtn.textContent = "+ Add New Project"
     newProjectSubmitBtn.addEventListener("click", () => {
-        pushNewProject();
-        toggleForm();
-        removeForm();   
-        console.log(projectArray)  
+        // check that the input is valid, before running the toggle and remove functions
+        if (formNameInput.checkValidity()) {
+            pushNewProject();
+            toggleForm();
+            removeForm();   
+            console.log(projectArray)
+        }  
     }) 
 
     newProjectSubmitBtn.setAttribute("type", "submit")
@@ -222,3 +229,7 @@ export {
     removeForm,
     newProjectForm
 }
+// TODO - add validation for new todo form. 
+//  - add the ability to delete projects and todos
+//  - implement local storage
+//  - mobile friendly

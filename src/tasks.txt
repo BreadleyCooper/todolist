@@ -1,0 +1,11 @@
+TASKS
+//  - make the view by project buttons work.
+    - current issue: Something wrong with the logic when you click on a project button, the todos are not clearing and updating. Is it becuase the filter function isnt working or is it something to do with the DOM stuff?
+    Why is the filred array empty?
+
+//  - implement local storage
+//  - mobile friendly
+
+NOTES for readme
+// Issue with form validation - fixed by adding some js logic to check that the form is valid before running the function to toggle the form on or off
+// It would be better is the code for rendering the todo list was in a seperate function rather than repeated on the mainContent module

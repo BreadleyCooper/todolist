@@ -1,5 +1,6 @@
 // // DOM manipulation for input new todo form and new project form
 
+import { clearProjectList, refreshProjectList } from "."
 import updateMain from "./mainContent"
 import Todo, { todoArray } from "./todoObjects"
 import { projectArray } from "./todoObjects"
@@ -94,6 +95,7 @@ function todoForm (){
     formDueInput.setAttribute("type", "date")
     formDueInput.setAttribute("id", "dueInput")
     formDueInput.setAttribute("name", "dueDate")
+    formDueInput.setAttribute("required", "")
     formElementDue.append(formDueLabel, formDueInput)
 
     // form submit button container
@@ -102,6 +104,7 @@ function todoForm (){
     overlayForm.appendChild(formElementSubmit)
     // submit button 
     const formSubmitButton = document.createElement("button")
+    formSubmitButton.textContent = "Add New Todo"
     formSubmitButton.addEventListener("click", () => {
         addTodo();
         toggleForm();
@@ -181,6 +184,7 @@ function newProjectForm(){
     formNameInput.setAttribute("required", "")
     formNameInput.setAttribute("name", "newProjectInput")
     formNameInput.setAttribute("minlength", "1")
+    formNameInput.setAttribute("maxlength", "30")
     formElementName.append(formNameLabel, formNameInput);
 
     // list of current Projects
@@ -205,7 +209,9 @@ function newProjectForm(){
         if (formNameInput.checkValidity()) {
             pushNewProject();
             toggleForm();
-            removeForm();   
+            removeForm(); 
+            clearProjectList() 
+            refreshProjectList(); 
             console.log(projectArray)
         }  
     }) 
@@ -229,7 +235,3 @@ export {
     removeForm,
     newProjectForm
 }
-// TODO - add validation for new todo form. 
-//  - add the ability to delete projects and todos
-//  - implement local storage
-//  - mobile friendly

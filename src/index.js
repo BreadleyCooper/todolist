@@ -1,9 +1,13 @@
 import "./style.css"
-import Todo from "./todoObjects"
-import updateMain from "./mainContent"
+import Todo, { filtered, projectArray, todoArray } from "./todoObjects"
+import updateMain, { clearTodos, updateMainFiltered } from "./mainContent"
 import { toggleForm, todoForm, newProjectForm } from "./form"
 // import {todoArray, projectArray} from "./todoObjects"
 // grabbing the root node element
+
+window.addEventListener("DOMContentLoaded", () => {
+    refreshProjectList()
+})
 
 const content = document.querySelector("#content")
 
@@ -34,6 +38,51 @@ addNewProject.addEventListener("click", () =>{
 })
 projects.appendChild(addNewProject)
 
+const projectInstructions = document.createElement("div")
+projectInstructions.textContent = "List of current projects, click to view Todos"
+projectInstructions.classList.toggle("projectInstructions")
+projects.appendChild(projectInstructions)
+
+// ul of projects container
+const projectListContainer = document.createElement("div")
+projectListContainer.classList.toggle("projectListContainer")
+projects.appendChild(projectListContainer)
+
+
+// loop through projects to list them on the side panel
+function refreshProjectList() {
+    projectArray.forEach((element) => {
+        const projectButtonContainer = document.createElement("div")
+        projectListContainer.appendChild(projectButtonContainer)
+        projectButtonContainer.classList.toggle("projectButtonContainer")
+        const projectList = document.createElement("button")
+        projectList.classList.toggle("projectButton")
+        projectList.textContent = element
+        projectListContainer.appendChild(projectList)
+        // event listeners for each project button
+        projectList.addEventListener("click", () => {
+            clearTodos();
+            todoArray.forEach((element) => {
+                if (element.project === projectList.textContent){
+                    filtered.push(element)
+                }
+                updateMainFiltered();
+                console.log(filtered)
+            })
+        })
+        
+        
+    })
+}
+// function to clear the list of projects before looping through to prevent repeating of elements
+function clearProjectList () {
+    while(projectListContainer.firstChild){
+        projectListContainer.removeChild(projectListContainer.lastChild)
+    }
+}
+
+
+
 
 // main content
 const main = document.createElement("div")
@@ -45,6 +94,9 @@ addNewTodo.addEventListener("click", () => {
     toggleForm()
     todoForm()
 })
+const todoContainer = document.createElement("div")
+todoContainer.classList.toggle("todoContainer")
+main.appendChild(todoContainer)
 main.insertBefore(addNewTodo, main.firstChild)
 
 // footer
@@ -63,5 +115,12 @@ gardening.pushTodo()
 
 export default main
 updateMain()
+
+export {
+    refreshProjectList,
+    clearProjectList
+}
+
+
 
 

@@ -1,7 +1,6 @@
 TASKS
 //  - make the view by project buttons work.
-    - current issue: Something wrong with the logic when you click on a project button, the todos are not clearing and updating. Is it becuase the filter function isnt working or is it something to do with the DOM stuff?
-    Why is the filred array empty?
+    - current issue: clear todos is only working on the first click. The filtered array system doesnt seem to be working. Is it an issue with the array resetting? Or an issue with if statement match check on the event listeners for the projects? 
 
 //  - implement local storage
 //  - mobile friendly

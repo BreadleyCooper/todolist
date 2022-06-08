@@ -79,9 +79,9 @@ function updateMainFiltered () {
     });
 }
 
-// function to clear the todo list, used when filtering by projects
+// function to clear the todo list, used when filtering by projects NOT WORKING
 function clearTodos () {
-    const todoContainer = document.getElementsByClassName("todoContainer")
+    const todoContainer = document.querySelector(".todoContainer")
     while (todoContainer.firstChild){
         todoContainer.removeChild(todoContainer.lastChild)
     }

@@ -43,7 +43,7 @@ projectInstructions.textContent = "List of current projects, click to view Todos
 projectInstructions.classList.toggle("projectInstructions")
 projects.appendChild(projectInstructions)
 
-// ul of projects container
+// projects container
 const projectListContainer = document.createElement("div")
 projectListContainer.classList.toggle("projectListContainer")
 projects.appendChild(projectListContainer)
@@ -61,13 +61,17 @@ function refreshProjectList() {
         projectListContainer.appendChild(projectList)
         // event listeners for each project button
         projectList.addEventListener("click", () => {
-            clearTodos();
+            clearTodos(); //this only works once! doesnt clear after the first click
             todoArray.forEach((element) => {
                 if (element.project === projectList.textContent){
                     filtered.push(element)
+                    console.log("filtered array before reset", filtered)
                 }
                 updateMainFiltered();
-                console.log(filtered)
+                
+                filtered.length = 0
+                console.log("filtered array after reset", filtered)
+                
             })
         })
         
@@ -81,6 +85,7 @@ function clearProjectList () {
     }
 }
 
+// need to create a function that clears the filtered array
 
 
 

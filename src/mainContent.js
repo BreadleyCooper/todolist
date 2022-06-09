@@ -25,7 +25,7 @@ function updateMain () {
         todo.append(todoName, todoPriority, todoDueDate, todoProject, todoCompleteBtn)
         // eventlistener for complete button
         todoCompleteBtn.addEventListener("click", () => {
-            // push todo to completed array
+            // push todo to completed 
             completedTodos.push(element)
             // logic here to remove this single instance
             todoContainer.removeChild(todo)

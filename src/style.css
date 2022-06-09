@@ -88,6 +88,9 @@ body {
 }
 .projectListContainer { 
   display: flex;
+  flex-wrap: wrap;
+  overflow: scroll;
+  max-width: 400px;
 
 }
 .projectButton {

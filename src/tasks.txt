@@ -1,4 +1,5 @@
 TASKS
+//  - fix where the todos are rendered, currently they are showing at the bottom. Need to change some of the DOM elements around.
 
 //  - implement local storage
 //  - mobile friendly

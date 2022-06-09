@@ -101,6 +101,30 @@ addNewTodo.addEventListener("click", () => {
     toggleForm()
     todoForm()
 })
+// head row of Todos
+const todoHead = document.createElement("div")
+todoHead.classList.toggle("todoHead")
+const todoHeadTodo = document.createElement("div")
+const todoHeadPriority = document.createElement("div")
+const todoHeadDue = document.createElement("div")
+const todoHeadProject = document.createElement("div")
+const todoHeadComplete = document.createElement("div")
+// head row class toggles
+todoHeadTodo.classList.toggle("todoHeadItem")
+todoHeadPriority.classList.toggle("todoHeadItem")
+todoHeadDue.classList.toggle("todoHeadItem")
+todoHeadProject.classList.toggle("todoHeadItem")
+todoHeadComplete.classList.toggle("todoHeadItem")
+//head row text contents
+todoHeadTodo.textContent = "ToDo"
+todoHeadPriority.textContent = "Priority"
+todoHeadDue.textContent = "Due By"
+todoHeadProject.textContent = "Project"
+todoHeadComplete.textContent = "Mark as Complete"
+// appending Todo head to main
+main.appendChild(todoHead)
+todoHead.append(todoHeadTodo, todoHeadPriority, todoHeadDue, todoHeadProject, todoHeadComplete)
+
 const todoContainer = document.createElement("div")
 todoContainer.classList.toggle("todoContainer")
 main.appendChild(todoContainer)

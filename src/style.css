@@ -99,6 +99,9 @@ body {
     display: flex;
     justify-content: space-around;
 }
+.todo.completed {
+  text-decoration: line-through;
+}
 .overlayForm {
   position:absolute;
   top:50vh;

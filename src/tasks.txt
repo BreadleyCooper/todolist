@@ -1,9 +1,8 @@
 TASKS
-//  - make the view by project buttons work.
-    - current issue: clear todos is only working on the first click. The filtered array system doesnt seem to be working. Is it an issue with the array resetting? Or an issue with if statement match check on the event listeners for the projects? 
 
 //  - implement local storage
 //  - mobile friendly
+//  - add overflow for todo lists and project lists
 
 NOTES for readme
 // Issue with form validation - fixed by adding some js logic to check that the form is valid before running the function to toggle the form on or off

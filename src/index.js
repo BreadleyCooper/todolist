@@ -2,11 +2,13 @@ import "./style.css"
 import Todo, { filtered, projectArray, todoArray } from "./todoObjects"
 import updateMain, { clearTodos, updateMainFiltered } from "./mainContent"
 import { toggleForm, todoForm, newProjectForm } from "./form"
+import { renderShowCompletedBtn } from "./showCompleted"
 // import {todoArray, projectArray} from "./todoObjects"
 // grabbing the root node element
 
 window.addEventListener("DOMContentLoaded", () => {
     refreshProjectList()
+    renderShowCompletedBtn()
 })
 
 const content = document.querySelector("#content")
@@ -63,7 +65,7 @@ function refreshProjectList() {
         projectList.addEventListener("click", () => {
             clearTodos(); //this only works once! doesnt clear after the first click
             todoArray.forEach((element) => {
-                if (element.project === projectList.textContent){
+                if (element.project == projectList.textContent){
                     filtered.push(element)
                     console.log("filtered array before reset", filtered)
                 }
@@ -116,6 +118,9 @@ leftSidebar.append(viewAll, projects)
 // testing a random Todo
 const gardening = new Todo("Gardening","Gardening","Urgent","monday")
 gardening.pushTodo()
+
+const work = new Todo("Work", "Work", "Urgent", "Today")
+work.pushTodo()
 
 
 export default main

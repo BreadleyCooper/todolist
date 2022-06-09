@@ -1,6 +1,6 @@
 // importing the arrays and the DOM element
 import todoLoop from "./todoLoop";
-import {filtered, projectArray,todoArray } from "./todoObjects";
+import {completedTodos, filtered, projectArray,todoArray } from "./todoObjects";
 import todoForm from "./form";
 
 // function to create and append the main section with each todo
@@ -25,6 +25,8 @@ function updateMain () {
         todo.append(todoName, todoPriority, todoDueDate, todoProject, todoCompleteBtn)
         // eventlistener for complete button
         todoCompleteBtn.addEventListener("click", () => {
+            // push todo to completed array
+            completedTodos.push(element)
             // logic here to remove this single instance
             todoContainer.removeChild(todo)
             todoArray.splice(todoArray.indexOf(element), 1);
@@ -44,14 +46,13 @@ function updateMain () {
 function updateMainFiltered () {
     filtered.forEach(element => {
         const main = document.querySelector(".main")
-        const todoContainer = document.createElement("div")
         const todo = document.createElement("div")
+        const todoContainer = document.querySelector(".todoContainer")
         const todoCompleteBtn = document.createElement("button")
         const todoName = document.createElement("div")
         const todoPriority = document.createElement("div")
         const todoDueDate = document.createElement("div")
         const todoProject = document.createElement("div")
-        todoContainer.classList.toggle("todoContainer")
         todo.classList.toggle("todo")
         todoCompleteBtn.classList.toggle("todoCompletBtn")
         todoCompleteBtn.textContent = "✔️"
@@ -63,6 +64,8 @@ function updateMainFiltered () {
         todo.append(todoName, todoPriority, todoDueDate, todoProject, todoCompleteBtn)
         // eventlistener for complete button
         todoCompleteBtn.addEventListener("click", () => {
+            // push the todo Object into the completed todos
+            completedTodos.push(element)
             // logic here to remove this single instance
             todoContainer.removeChild(todo)
             todoArray.splice(todoArray.indexOf(element), 1);
@@ -74,10 +77,12 @@ function updateMainFiltered () {
             todoPriority.textContent = element.priority;
             todoDueDate.textContent = element.dueDate;
             todoProject.textContent = element.project;
-            todo.append()
+            todoContainer.append()
         }
     });
 }
+
+
 
 // function to clear the todo list, used when filtering by projects NOT WORKING
 function clearTodos () {
@@ -92,5 +97,5 @@ function clearTodos () {
 export default updateMain
 export {
     updateMainFiltered,
-    clearTodos
+    clearTodos,
 }

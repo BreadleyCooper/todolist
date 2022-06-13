@@ -5,6 +5,7 @@ import updateMain from "./mainContent"
 import Todo, { todoArray } from "./todoObjects"
 import { projectArray } from "./todoObjects"
 
+//*NEW TODO FORM
 function todoForm (){
     // container elements for form
     const form = document.createElement("form")
@@ -144,7 +145,7 @@ function removeForm() {
     }
 } 
 
-// form for adding a new Project (remember to include a list of current projects)
+// **NEW PROJECT FORM 
 function newProjectForm(){
     // container elements for form
     const form = document.createElement("form")

@@ -26,8 +26,12 @@ header.textContent = "To Do"
 const leftSidebar = document.createElement("div")
 leftSidebar.classList.toggle("leftSidebar")
 const viewAll = document.createElement("button");
+viewAll.addEventListener("click", () => {
+    clearTodos();
+    updateMain();
+})
 viewAll.classList.toggle("viewAll")
-viewAll.textContent = "View All Todos"
+viewAll.textContent = "View All Uncompleted"
 const projects = document.createElement("div")
 projects.classList.toggle("projects")
 projects.textContent = "Projects"

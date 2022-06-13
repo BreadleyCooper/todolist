@@ -8,6 +8,7 @@ function updateMain () {
     todoArray.forEach(element => {
         const main = document.querySelector(".main")
         const todoContainer = document.querySelector(".todoContainer")
+        const todoHead = document.querySelector(".todoHead")
         const todo = document.createElement("div")
         const todoCompleteBtn = document.createElement("button")
         const todoName = document.createElement("div")
@@ -20,8 +21,8 @@ function updateMain () {
         todoName.classList.toggle("todoName")
         todoPriority.classList.toggle("todoPriority")
         todoProject.classList.toggle("todoProject")
-        main.appendChild(todoContainer)
-        todoContainer.appendChild(todo)
+        todoHead.after(todoContainer)
+        todoContainer.append(todo)
         todo.append(todoName, todoPriority, todoDueDate, todoProject, todoCompleteBtn)
         // eventlistener for complete button
         todoCompleteBtn.addEventListener("click", () => {
@@ -48,6 +49,7 @@ function updateMainFiltered () {
         const main = document.querySelector(".main")
         const todo = document.createElement("div")
         const todoContainer = document.querySelector(".todoContainer")
+        const todoHead = document.querySelector(".todoHead")
         const todoCompleteBtn = document.createElement("button")
         const todoName = document.createElement("div")
         const todoPriority = document.createElement("div")
@@ -59,8 +61,8 @@ function updateMainFiltered () {
         todoName.classList.toggle("todoName")
         todoPriority.classList.toggle("todoPriority")
         todoProject.classList.toggle("todoProject")
-        main.appendChild(todoContainer)
-        todoContainer.appendChild(todo)
+        todoHead.after(todoContainer)
+        todoContainer.append(todo)
         todo.append(todoName, todoPriority, todoDueDate, todoProject, todoCompleteBtn)
         // eventlistener for complete button
         todoCompleteBtn.addEventListener("click", () => {

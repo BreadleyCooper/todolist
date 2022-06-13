@@ -12,7 +12,7 @@ let projectJSONHolder = ""
 function retrieveTodos () {
     todoJSONHolder = localStorage.getItem("storedTodos")
     if (todoJSONHolder !== null){
-        todoArray = JSON.parse(todoJSONHolder)
+        todoArray.push(todoJSONHolder)
         console.log("retrieve todos is firing")
         if (todoArray !== null) {
             updateMain()
@@ -22,7 +22,7 @@ function retrieveTodos () {
 function retrieveProjects () {
     projectJSONHolder = localStorage.getItem("storedProjects")
     if (projectJSONHolder !== null){
-        projectArray = JSON.parse(projectJSONHolder)
+        projectArray.push(projectJSONHolder)
         if (projectArray !== null) {
             refreshProjectList()
         }

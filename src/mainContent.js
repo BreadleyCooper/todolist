@@ -1,5 +1,4 @@
 // importing the arrays and the DOM element
-import todoLoop from "./todoLoop";
 import {completedTodos, filtered, projectArray,todoArray } from "./todoObjects";
 import todoForm from "./form";
 

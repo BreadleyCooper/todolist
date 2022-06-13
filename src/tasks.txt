@@ -1,6 +1,9 @@
 TASKS
 
 //  - implement local storage
+            ISSUES:
+            Seems theres a problem with retrieving the json and setting the todoarry and projectarrays
+            
 //  - tidy up the way the todos are structured - more rigid table (grid?)
 //  - mobile friendly
 //  - add overflow for todo lists and project lists

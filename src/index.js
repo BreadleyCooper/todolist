@@ -3,10 +3,13 @@ import Todo, { filtered, projectArray, todoArray } from "./todoObjects"
 import updateMain, { clearTodos, updateMainFiltered } from "./mainContent"
 import { toggleForm, todoForm, newProjectForm } from "./form"
 import { renderShowCompletedBtn } from "./showCompleted"
+import { retrieveProjects, retrieveTodos } from "./localStorage"
 // import {todoArray, projectArray} from "./todoObjects"
 // grabbing the root node element
 
 window.addEventListener("DOMContentLoaded", () => {
+    retrieveProjects()
+    retrieveTodos()
     refreshProjectList()
     renderShowCompletedBtn()
 })
@@ -57,6 +60,7 @@ projects.appendChild(projectListContainer)
 
 // loop through projects to list them on the side panel
 function refreshProjectList() {
+    console.log(projectArray)
     projectArray.forEach((element) => {
         const projectButtonContainer = document.createElement("div")
         projectListContainer.appendChild(projectButtonContainer)

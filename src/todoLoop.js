@@ -1,1 +1,0 @@
-// make a function that loops through the object on creation to fill in the DOM?

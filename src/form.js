@@ -1,6 +1,7 @@
 // // DOM manipulation for input new todo form and new project form
 
 import { clearProjectList, refreshProjectList } from "."
+import { storeProjects, storeTodos } from "./localStorage"
 import updateMain from "./mainContent"
 import Todo, { todoArray } from "./todoObjects"
 import { projectArray } from "./todoObjects"
@@ -111,6 +112,7 @@ function todoForm (){
         toggleForm();
         removeForm();
         updateMain();
+        storeTodos();
         console.log(todoArray)
     }) 
 
@@ -125,7 +127,6 @@ function todoForm (){
 // function to toggle class that brings up a new todo form
 function toggleForm(){
     document.body.classList.toggle("activeForm")
-    console.log("toggleForm is firing")
 }
 // function to call when create a new Todo form button clicked, after completing the form
 function addTodo(name, project, priority, dueDate){
@@ -213,7 +214,7 @@ function newProjectForm(){
             removeForm(); 
             clearProjectList() 
             refreshProjectList(); 
-            console.log(projectArray)
+            storeProjects();
         }  
     }) 
 
